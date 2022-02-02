@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Ederson</title>
+    <link rel="shortcut icon" href="icon/eicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>EDERSON</h1>
+    </header>
+    <main>
+        <h2>Sobre</h2>
+            <p>Sou Engenheiro Mecânico em formação e entusiasta de tecnologia</p>
+        <h2>Portfólio</h2>
+        <section class="conhecimentos">
+            <label for="toggle-2">
+                Python
+            </label>
+            <input type="checkbox" id="toggle-2">
+            <div id="video-python">
+                <p id=txt-conhecimentos>
+                    Meu primeiro contato com Python foi através da matéria de Cálculo Numérico e posteriormente em Probabilidade e Estatisca, com o uso do software "R".
+                    Em concordância com isso participei de um projeto extra-curricular na área de robótica no qual trabalhei
+                    com o software "Blender", que tem como linguagem nativa o Python, para a criação de objetos e animações 3D.
+                    <br>
+                    <p id=txt-conhecimentos>
+                    O vídeo a seguir é uma demonstração simples de uma animação feita usando script, no qual o objeto realiza
+                    um movimento de esprial em um espaço 3D.
+                    </p>
+                </p>
+                <div class="videos">
+                    <iframe width="480" height="270" src="https://www.youtube.com/embed/JhPeDNT-BBg" title=
+                    "YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <label for="toggle-3">
+                    <p id="python-script">Clique aqui para ver o Script</p>
+                </label>
+                <input type="checkbox" id="toggle-3">
+                <div id="codigo-python">
+                    <pre>
+                        <code>
+#importing libraries
+import bpy
+import math
+from mathutils import Vector
+
+#selecting a project object
+esf=bpy.data.objects['Corpo_Padrao']
+
+#select collection (only on the main level)
+collections = bpy.context.view_layer.layer_collection.children
+
+for collection in collections:
+    if collection.name == "Caminho":
+        bpy.context.view_layer.active_layer_collection = collection
+
+#adjusting initial parameters
+framein=150
+x=0
+y=x+3
+anginicial=-180
+angfinal=360
+anginicialobj=0
+
+#make a new curve
+crv = bpy.data.curves.new('crv', 'CURVE')
+crv.dimensions = '3D'
+
+#make a new spline in that curve
+spline = crv.splines.new(type='NURBS')
+
+#positioning the object, creating keyframes and spline points
+while x&lt;=angfinal:
+    theta=((anginicial+x)*math.pi)/180
+    coord=[x/180,1.5*math.cos(theta),1.5*math.sin(theta)]
+    esf.location=coord
+    esf.keyframe_insert(data_path = "location", frame=framein+x+1)
+    esf.rotation_mode = "XYZ"
+    esf.rotation_euler.y = math.radians(anginicialobj+x)
+    esf.keyframe_insert(data_path = 'rotation_euler',
+    frame = framein+x+1)
+    spline.points.add(1)
+    spline.points[-1].co = [coord[0],coord[1],coord[2],1]
+    x=x+1
+obj = bpy.data.objects.new('cube', crv)
+bpy.context.scene.collection.objects.link(obj)
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </section>
+        <section class="conhecimentos">
+            <label for="toggle-1">
+                JavaScript
+            </label>
+            <input type="checkbox" id="toggle-1">
+            <div id="chatbot">
+                <p id="cabchat">ChatBot</p>
+                <!--teste-->
+                <div class="box" id="msgs">
+                    <div class="mid">
+                        <div id="chat">
+                            <p id="chatLog"> </p>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="userBox"onkeydown="if(event.keyCode == 13){ responder() }"placeholder="Digite algo">
+            </div>
+        </section>
+        <section class="conhecimentos">
+            <label for="toggle-5">
+                Linguagem de Programação C
+            </label>
+            <input type="checkbox" id="toggle-5">
+            <div id="conteudo-c">
+                <p id=txt-conhecimentos>
+                    Aprendi C durante a faculdade e tive um aproveitamento muito bom.
+                    Não cheguei a aplica-lo em algum projeto real, mas serviu como uma excelente base para
+                    linguagens de programação em geral.
+                    <br><p id=txt-conhecimentos>
+                    A sguir está um programa que simula o jogo da forca, exemplificando o uso dessa
+                    linguagem. Fique a vontade para testar em um compilador online ou pessoal!
+                    </p>
+                </p>
+                <label for="toggle-6">
+                    <p id="python-script">Clique aqui para ver o Script</p>
+                </label>
+                <input type="checkbox" id="toggle-6">
+                <div id="codigo-c">
+                    <pre>
+                        <code>
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdlib.h&gt;//para funcionar o system.
+    
+void menujogo(int nivel,int erromax,int i);
+void selecionar_palavra (char *palavrasort,int nivel);
+                                                       
+main ()
+{
+    char palavra[15], palavraescondida[15], letra, opcaoent;
+    char dicas[3][20]={"Tem na cozinha","Time de futebol","Aedes aegypti"};
+    int nivel=0, erromax=5, i, j=0, dica=1, k;
+    int tentativas, letrasacertadas, verificar,opcao;
+
+    while (nivel!=99)
+    {
+        tentativas=erromax;
+        letrasacertadas=0;
+        selecionar_palavra(palavra, nivel);
+
+        //ocultando a palavra
+        for (i=0;palavra[i]!='\0';i++)
+        {
+            palavraescondida[i]='-';
+        }
+        palavraescondida[i]='\0';
+
+        menujogo(nivel, erromax, i);
+
+        printf("   A palavra e: [%s]\n", palavraescondida);
+
+        //começando o jogo - interação com o usuario
+        while (tentativas!=0)
+        {
+            opcao=0;
+            k=0;
+            //o "k" vai verificar se acertou pelo menos uma letra
+            if (dica==1) //se ainda não usou a dica
+            {
+                printf("   Voce tem direita a uma dica.\n");
+                printf("   Usar    dica: Digite 1\n");
+                printf("   Tentar letra: Digite 2\n");
+                //verificando se o numero digitado e diferente de 1 ou 2
+                while (opcao !=1 && opcao !=2)
+                {
+                    printf("   Opcao: ");scanf(" %c", &opcaoent);
+                    if (isdigit(opcaoent)!=0)
+                    //se for numero retorna qualquer coisa diferente de zero
+                    {
+                        opcao=opcaoent-'0';
+                        //converte um char em um numero inteiro
+                        if (opcao !=1 && opcao !=2)
+                        {
+                            printf("   Opcao incorreta. Digite 1  ou 2\n");
+                        }
+                    }
+                    else
+                    {
+                        printf("   Opcao incorreta. Digite 1  ou 2\n");
+                    }
+                }
+                if (opcao==1) //se quiser usar a dica
+                {
+                    printf("   DICA: %s\n", dicas[nivel]);
+                    dica=0;
+                }
+                else //tentando uma letra
+                {
+                    printf("   Digite a Letra: ");
+                    scanf(" %c", &letra);
+                    while (isalpha(letra)==0)
+                    //qualquer coisa diferente de zero significa que é uma letra
+                    {
+                        printf("   Caractere invalido\n");
+                        printf("   Digite a Letra: ");
+                        scanf(" %c", &letra);
+                    }
+                    letra=tolower(letra); //convertendo maiusculo para minusculo
+                    //verificando se a palavra contem a letra
+                    for (i=0;palavra[i]!='\0';i++)
+                    {
+                        if (palavra[i]==letra) // se acertou a letra
+                        {
+                            if (palavraescondida[i]=='-')
+                            //verificanndo se ja acertou a letra
+                            {
+                                palavraescondida[i]=letra;
+                                letrasacertadas=letrasacertadas+1;
+                                k=1;
+                            }
+                            else
+                            {
+                                k=1;
+                            }
+                        }
+                    }
+                    if (k==1) //se acertou pelo mnos uma letra
+                    {
+                        printf("   Voce Acertou a Letra\n");
+                        printf("   A palavra e: [%s]\n\n", palavraescondida);
+                    }
+                    else // se nao acertou nada
+                    {
+                        printf("   Voce Nao Acertou a Letra\n");
+                        tentativas=tentativas-1;
+                        printf("   Restam %d Tentativas\n\n", tentativas);
+                    }
+                }
+            }
+            else //se ja usou a dica
+            {
+                printf("   Digite a Letra: ");
+                scanf(" %c", &letra);
+                while (isalpha(letra)==0)
+                //qualquer coisa diferente de zero significa que é uma letra
+                {
+                    printf("   Caractere invalido\n");
+                    printf("   Digite a Letra: ");
+                    scanf(" %c", &letra);
+                }
+                letra=tolower(letra); //convertendo maiusculo para minusculo
+                //verificando se a palavra contem a letra
+                for (i=0;palavra[i]!='\0';i++)
+                {
+                    if (palavra[i]==letra) // se acertou a letra
+                    {
+                        if (palavraescondida[i]=='-')
+                        //verificanndo se ja acertou a letra
+                        {
+                            palavraescondida[i]=letra;
+                            letrasacertadas=letrasacertadas+1;
+                            k=1;
+                        }
+                        else
+                        {
+                            k=1;
+                        }
+
+                    }
+                }
+                    if (k==1) //se acertou pelo mnos uma letra
+                    {
+                        printf("   Voce Acertou a Letra\n");
+                        printf("   A palavra e: [%s]\n\n", palavraescondida);
+                    }
+                    else // se nao acertou nada
+                    {
+                        printf("   Voce Nao Acertou a Letra\n");
+                        tentativas=tentativas-1;
+                        printf("   Restam %d Tentativas\n\n", tentativas);
+                    }
+            }
+            if (letrasacertadas==i) //se acrtou a palavra
+            {
+                nivel=nivel+1;
+                dica=1;
+                printf("   **Parabens! Voce passou de nivel**\n");
+                system("pause");
+                printf("   Precione alguma tecla para continuar...\n");
+                system("cls"); //apagar console
+                break; //sair do enquanto
+            }
+        }
+        if (tentativas==0) //acabaram as tentativas
+        {
+            printf("   Acabaram as suas Tentativas. Voce Perdeu!\n");
+            printf("   Deseja reiniciar o jogo?\n");
+            printf("   Reiniciar: Digite 1\n");
+            printf("   Finalizar: Digite 2\n");
+            while (opcao !=1 && opcao !=2)
+            //verificando se o numero digitado e diferente de 1 ou 2
+            {
+                printf("   Opcao: ");scanf(" %c", &opcaoent);
+                if (isdigit(opcaoent)!=0)
+                //se for numero retorna qualquer coisa diferente de zero
+                {
+                    opcao=opcaoent-'0'; //converte um char em um numero inteiro
+                    if (opcao !=1 && opcao !=2)
+                    {
+                        printf("   Opcao incorreta. Digite 1  ou 2\n");
+                    }
+                }
+                else
+                {
+                    printf("   Opcao incorreta. Digite 1  ou 2\n");
+                }
+            }
+            if (opcao==1) //reinicia o jogo
+            {
+                system("cls"); //apagar console
+                letrasacertadas=0;
+                nivel=0;
+                dica=1;
+            }
+            else //finalizar o jogo
+            {
+                nivel=99;
+            }
+        }
+        if (nivel==3)
+        {
+            nivel=99;
+            printf("   **Parabens! Voce Venceu**\n");
+        }
+    }
+    printf("   \n\n---JOGO FINALIZADO---\n\n\n");
+}
+
+
+
+
+                                            
+void selecionar_palavra (char *palavrasort,int nivel)
+{
+    char nv[3][15]={"colher","bragantino","chikungunya"};
+    int i;
+
+    //copiando a string do nivel atual
+    for (i=0;nv[nivel][i]!='\0';i++)
+    {
+        palavrasort[i]=nv[nivel][i];
+    }
+    palavrasort[i]='\0';
+
+}
+
+
+
+
+void menujogo(int nivel,int erromax,int i)
+{
+    printf("########################################################\n");
+    printf("                         FORCA\n");
+    printf("########################################################\n\n");
+    printf("________________________________________________________\n");
+    if (nivel==0)
+    {
+        printf("  Nivel: Inciante\n");
+        printf("  A palavra contem %d letras\n", i);
+    }
+    else
+    {
+        if (nivel==1)
+        {
+            printf("  Nivel: Ta sabendo Legal\n");
+            printf("  A palavra contem %d letras\n", i);
+        }
+        else
+        {
+            printf("  Nivel: O Mais Brabo\n");
+            printf("  A palavra contem %d letras\n", i);
+        }
+    }
+    printf("  Numero Maximo de Tentativas por Palavra: %d\n", erromax);
+    printf("________________________________________________________\n\n");
+}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </section>
+        <section class="conhecimentos">
+            <label for="toggle-4">
+                Visual Basic for Applications
+            </label>
+            <input type="checkbox" id="toggle-4">
+            <div id="video-vba">
+                <p id=txt-conhecimentos>
+                    Com relação aos meus conhecimentos em VBA, pude coloca-los em prática em ambiente de
+                    produção na empresa que trabalhei durante dois anos. Desenvolvi desde projetos mais
+                    simples, semelhantes ao exemplo do vídeo a seguir, até mais complexos, onde estes
+                    foram criados com uma interface em excel (VBA),
+                    mas utilizando um banco de dados externo (Access) que possibilitava o uso, consulta
+                    e alteração de dados por vários usuários de forma simultânea.
+
+                </p>
+                <div class="videos">
+                    <iframe width="480" height="270" src="https://www.youtube.com/embed/xsuoFdsLr7c"
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+                    clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section class="conhecimentos">
+            <label for="toggle-7">
+                Projetos Mecâncicos e Softwares CAD
+            </label>
+            <input type="checkbox" id="toggle-7">
+            <div id="video-cad">
+                <p id=txt-conhecimentos>
+                    Durante dois anos e meio fui competidor das Olimpiadas do conhecimento SENAI, sendo
+                    competidor na modalidade Desenho Técnico Mecânico em CAD. Usei marjoritariamente
+                    o software Autodesk Inventor, mas também aprimorei meus conhecimentos em SolidWorks.
+                    Posteriormente tive um maior contato com essa área durante a faculdade contribuindo
+                    para meu crescimento.
+                    <br>
+                    <p id=txt-conhecimentos>
+                        O vídeo e o projeto a seguir é de 2014, referente a um redutor com diferencial
+                        usado apenas para o estudo de animações e detalhamento 2D de componentes e projeto.
+                        Usei simulação dinâmica para realizar a animação do vídeo e fiz o detalhamento do projeto.
+                    </p>
+                </p>
+                <div class="videos">
+                    <iframe width="480" height="270" src="https://www.youtube.com/embed/XMDaSSp5K1o"
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+                    clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p id="pdf"> <a href="pdfs/Redutor Diferencial.pdf"target="_blank" rel="noopener noreferrer">
+                    Detalhamento 2D em PDF</a>
+                </p>
+            </div>
+        </section>
+        <h2>Contato</h2>
+            <p>ederson.eng.contato@gmail.com</p>
+    </main>
+    <footer>
+         <p>Desenvolvido por Ederson</p>
+    </footer>
+<script src="chatbot.js"></script>
+</body>
+</html>

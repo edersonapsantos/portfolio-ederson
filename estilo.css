@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+:root{
+     --cor0: #384A59;
+     --cor1: #4A99DF;
+     --cor2: #89B3D9;
+     --cor3: #1D3D59;
+     --cor4: #6889A6;
+     --corsombra: #2e3c498e;
+}
+
+
+body{
+     background: var(--cor2);
+     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+     font-size: 1em;
+     color: rgb(0, 0, 0);
+     text-align: left;
+}
+
+header{
+     background-color: white;
+     border-radius: 10px;
+     box-shadow: 5px 5px 15px var(--corsombra);
+     padding: 15px;
+     height: 30px;
+     min-width: 315px;
+     max-width: 700px;
+     margin: 20px auto;
+}
+
+main{
+     background-color: white;
+     border-radius: 10px;
+     box-shadow: 5px 5px 15px var(--corsombra);
+     padding: 15px;
+     min-width: 375px;
+     max-width: 700px;
+     margin: auto;
+}
+
+footer{
+     color: rgb(238, 234, 229);
+     text-align: center;
+     font-style: italic;
+}
+
+h1{
+     text-align: center;
+     color: var(--cor3);
+}
+h2{
+     color: var(--cor0);
+     background-image: linear-gradient(to right, rgb(245, 251, 252), transparent);
+     border-radius: 8px;
+     text-indent: 5px;
+}
+
+header>h1{
+     margin: 0px;
+}
+
+/*imagem
+.logo{
+    float: right;
+    border: transparent thin solid;
+    padding: 0px;
+    margin: 0px 10px 10px 0;
+    max-width: 1em;
+}
+*/
+
+div.videos{
+    position: relative;
+    padding-bottom: 56.5%;
+}
+
+div.videos>iframe{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.conhecimentos{
+     text-align: center;
+     background-color: white;
+     border: none;
+     border-radius: 10px;
+     box-shadow: 3px 3px 5px var(--corsombra);
+     padding: 10px;
+     /*height: 15px;*/
+     width: 95%;
+     margin: 20px left;
+     margin-bottom: 20px;
+     line-height: 1.5em;
+}
+
+.conhecimentos:hover{
+     font-weight: bold;
+}
+
+#chatbot{
+     background-color: rgb(238, 248, 253);
+     border-radius: 5px;
+     border: solid;
+     border-width: 2px;
+     border-color: var(--corsombra);
+     padding: 0px;
+     width: 250px;
+     height: 250px;
+     margin: 25px auto;
+     font-weight: normal;
+}
+
+.conhecimentos > #chatbot, #video-python, #codigo-python, #video-vba, #conteudo-c, #codigo-c, #video-cad{
+     display: none;
+}
+
+ /* Checkbox Hack */
+ #toggle-1, #toggle-2, #toggle-3, #toggle-4, #toggle-5, #toggle-6, #toggle-7{
+      display:none;
+ }
+
+ 
+ label { 
+     -webkit-appearance: push-button;
+     -moz-appearance: button; 
+     display: inline-block;
+     cursor: pointer;
+     width: inherit;
+ }
+ 
+ /* CSS padrão da div */
+ #mostra {
+     display:none;
+ }
+ 
+ /* CSS quando o checkbox está marcado */
+ #toggle-1:checked ~ #chatbot {
+     display:block;
+ }
+
+ #toggle-2:checked ~ #video-python {
+     display:block;
+ }
+
+ 
+ #toggle-3:checked ~ #codigo-python {
+     display:block;
+ }
+
+ #toggle-4:checked ~ #video-vba {
+     display:block;
+ }
+
+ #toggle-5:checked ~ #conteudo-c {
+     display:block;
+ }
+
+ #toggle-6:checked ~ #codigo-c {
+     display:block;
+ }
+
+ #toggle-7:checked ~ #video-cad {
+     display:block;
+ }
+
+ #cabchat{
+     background-color: var(--cor3);
+     margin: -1px;
+     padding: 5px 0px;
+     border-radius: 5px 5px 0px 0px;
+     border: solid;
+     border-width: 2px;
+     border-color: var(--corsombra);
+     text-align: center;
+     color: white;
+     font-weight: bolder;
+ }
+
+ .box{
+     font-size: 14px;
+     font-family: 'Courier New', Courier, monospace;
+     background-color: rgb(238, 248, 253);
+     width: 250px;
+     height: 195px;
+     overflow-y: scroll;
+     overflow-x: hidden;
+     margin: 1px;
+     
+ }
+
+ #userBox{
+     font-family: 'Courier New', Courier, monospace;
+     border-radius: 5px;
+     border-color: rgba(0, 0, 0, 0.596);
+     width: 240px;
+     margin: 1px;
+ }
+
+ .pergunta{
+     border-radius: 5px 0px;
+     margin: 1px;
+     max-width: 215px;
+     width: max-content;
+     border: solid;
+     border-width: 1px;
+     border-color: var(--corsombra);
+     box-shadow: 1px 1px 3px var(--corsombra);
+     background-color: rgb(218, 218, 218);
+     padding: 2px;
+
+ }
+
+ .resposta{
+     border-radius: 5px 0px;
+     margin: 10px;
+     max-width: 215px;
+     width: max-content;
+     border: solid;
+     border-width: 1px;
+     border-color: var(--corsombra);
+     box-shadow: 1px 1px 3px var(--corsombra);
+     background-color: rgba(77, 250, 235, 0.164);
+     padding: 2px;
+ }
+
+ #video-python, #video-vba, #conteudo-c, #video-cad{
+      text-align: left;
+      margin-top: 10px;
+      padding: 5px 0px;
+ }
+
+ #txt-conhecimentos{
+      text-align: justify;
+      font-weight: normal;
+      font-size: 14px;
+      text-indent: 30px;
+ }
+
+ #python-script{
+      font-size: 14px;
+      font-weight: normal;
+      margin: 10px;
+      padding: 5px;
+      border: solid;
+      border-radius: 5px;
+      border-width: 1px;
+      border-color: var(--corsombra);
+ }
+
+ #codigo-python{
+     font-weight: normal;
+     font-size: 8px;
+     line-height: 1.2em;
+ }
+
+#codigo-c{
+     font-weight: normal;
+     font-size: 8px;
+     line-height: 1.2em;
+ }
+
+ #pdf{
+     font-size: 14px;
+     font-weight: normal;
+     margin: 10px;
+     margin-right: 70%;
+     padding: 5px;
+     border: solid;
+     border-radius: 5px;
+     border-width: 1px;
+     border-color: var(--corsombra);
+}
