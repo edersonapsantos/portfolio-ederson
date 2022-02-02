@@ -181,7 +181,7 @@ main ()
                 {
                     printf("   Opcao: ");scanf(" %c", &opcaoent);
                     if (isdigit(opcaoent)!=0)
-                    //se for numero retorna qualquer coisa diferente de zero
+                    //se for numero retorna diferente de zero
                     {
                         opcao=opcaoent-'0';
                         //converte um char em um numero inteiro
@@ -205,13 +205,14 @@ main ()
                     printf("   Digite a Letra: ");
                     scanf(" %c", &letra);
                     while (isalpha(letra)==0)
-                    //qualquer coisa diferente de zero significa que é uma letra
+                    //diferente de zero significa que é uma letra
                     {
                         printf("   Caractere invalido\n");
                         printf("   Digite a Letra: ");
                         scanf(" %c", &letra);
                     }
-                    letra=tolower(letra); //convertendo maiusculo para minusculo
+                    //convertendo maiusculo para minusculo
+                    letra=tolower(letra); 
                     //verificando se a palavra contem a letra
                     for (i=0;palavra[i]!='\0';i++)
                     {
@@ -232,8 +233,8 @@ main ()
                     }
                     if (k==1) //se acertou pelo mnos uma letra
                     {
-                        printf("   Voce Acertou a Letra\n");
-                        printf("   A palavra e: [%s]\n\n", palavraescondida);
+                      printf("   Voce Acertou a Letra\n");
+                      printf("   A palavra e: [%s]\n\n", palavraescondida);
                     }
                     else // se nao acertou nada
                     {
@@ -248,13 +249,14 @@ main ()
                 printf("   Digite a Letra: ");
                 scanf(" %c", &letra);
                 while (isalpha(letra)==0)
-                //qualquer coisa diferente de zero significa que é uma letra
+                //diferente de zero significa que é uma letra
                 {
                     printf("   Caractere invalido\n");
                     printf("   Digite a Letra: ");
                     scanf(" %c", &letra);
                 }
-                letra=tolower(letra); //convertendo maiusculo para minusculo
+                //convertendo maiusculo para minusculo
+                letra=tolower(letra);
                 //verificando se a palavra contem a letra
                 for (i=0;palavra[i]!='\0';i++)
                 {
@@ -276,8 +278,8 @@ main ()
                 }
                     if (k==1) //se acertou pelo mnos uma letra
                     {
-                        printf("   Voce Acertou a Letra\n");
-                        printf("   A palavra e: [%s]\n\n", palavraescondida);
+                      printf("   Voce Acertou a Letra\n");
+                      printf("   A palavra e: [%s]\n\n", palavraescondida);
                     }
                     else // se nao acertou nada
                     {
@@ -310,7 +312,8 @@ main ()
                 if (isdigit(opcaoent)!=0)
                 //se for numero retorna qualquer coisa diferente de zero
                 {
-                    opcao=opcaoent-'0'; //converte um char em um numero inteiro
+                    //converte um char em um numero inteiro
+                    opcao=opcaoent-'0';
                     if (opcao !=1 && opcao !=2)
                     {
                         printf("   Opcao incorreta. Digite 1  ou 2\n");
