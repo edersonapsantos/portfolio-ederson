@@ -61,7 +61,6 @@ h2{
 
 main>p{
     line-height: 1.5em;
-    text-indent: 10px;
     margin-top: 0px;
     margin-left: 10px;
     padding-top: 0px;
@@ -194,11 +193,11 @@ div.videos>iframe{
      font-family: 'Courier New', Courier, monospace;
      background-color: rgb(238, 248, 253);
      width: 250px;
-     height: 195px;
+     height: 190px;
      overflow-y: scroll;
      overflow-x: hidden;
      margin: 1px;
-     
+     margin-bottom: -3px;
  }
 
  #userBox{
@@ -206,7 +205,6 @@ div.videos>iframe{
      border-radius: 5px;
      border-color: rgba(0, 0, 0, 0.596);
      width: 240px;
-     margin: 1px;
  }
 
  .pergunta{
