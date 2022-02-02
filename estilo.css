@@ -54,11 +54,17 @@ h2{
      background-image: linear-gradient(to right, rgb(245, 251, 252), transparent);
      border-radius: 8px;
      text-indent: 5px;
+     margin-top: 5px;
+     margin-bottom: 10px;
 
 }
 
 main>p{
     line-height: 1.5em;
+    text-indent: 10px;
+    margin-top: 0px;
+    margin-left: 10px;
+    padding-top: 0px;
 }
 
 header>h1{
