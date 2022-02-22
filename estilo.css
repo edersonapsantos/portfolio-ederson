@@ -94,7 +94,9 @@ div.videos>iframe{
 .conhecimentos{
      text-align: center;
      background-color: white;
-     border: none;
+     border: solid;
+     border-width: 1px;
+     border-color: #b6b6b6;
      border-radius: 10px;
      box-shadow: 3px 3px 5px var(--corsombra);
      padding: 10px;
@@ -122,12 +124,12 @@ div.videos>iframe{
      font-weight: normal;
 }
 
-.conhecimentos > #chatbot, #video-python, #codigo-python, #video-vba, #conteudo-c, #codigo-c, #video-cad{
+.conhecimentos > #chatbot, #video-python, #codigo-python, #video-vba, #conteudo-c, #codigo-c, #video-cad, #conteudo-django{
      display: none;
 }
 
  /* Checkbox Hack */
- #toggle-1, #toggle-2, #toggle-3, #toggle-4, #toggle-5, #toggle-6, #toggle-7{
+ #toggle-1, #toggle-2, #toggle-3, #toggle-4, #toggle-5, #toggle-6, #toggle-7, #toggle-8{
       display:none;
  }
 
@@ -174,6 +176,10 @@ div.videos>iframe{
  #toggle-7:checked ~ #video-cad {
      display:block;
  }
+
+ #toggle-8:checked ~ #conteudo-django {
+    display:block;
+}
 
  #cabchat{
      background-color: var(--cor3);
@@ -230,7 +236,7 @@ div.videos>iframe{
      border-width: 1px;
      border-color: var(--corsombra);
      box-shadow: 1px 1px 3px var(--corsombra);
-     background-color: rgba(77, 250, 235, 0.164);
+     background-color: rgba(135, 208, 250, 0.164);
      padding: 2px;
  }
 
@@ -280,4 +286,8 @@ div.videos>iframe{
      border-radius: 5px;
      border-width: 1px;
      border-color: var(--corsombra);
+}
+
+#msgs{
+    line-height: 1.2em;
 }
