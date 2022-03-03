@@ -253,6 +253,12 @@ div.videos>iframe{
       text-indent: 30px;
  }
 
+ #txt-sobre, #txt-contato{
+    text-align: justify;
+    font-weight: normal;
+    font-size: 15px;
+}
+
  #python-script{
       font-size: 14px;
       font-weight: normal;
